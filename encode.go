@@ -4,14 +4,11 @@ import (
 	"bufio"
 	"bytes"
 	"encoding/base64"
-	"fmt"
 	"io"
 	"io/ioutil"
-	"math/rand"
 	"mime/quotedprintable"
 	"net/textproto"
 	"strings"
-	"time"
 
 	"github.com/daogan/emime/internal/coding"
 )
@@ -150,34 +147,4 @@ func (p *Part) setupPart() (cte string) {
 		p.Boundary = genRandomBoundary()
 	}
 	return cte
-}
-
-func genRandomBoundary() string {
-	rand.Seed(time.Now().UnixNano())
-	return fmt.Sprintf("%028x", rand.Uint64())
-}
-
-// wrapLine wraps a long line into multiple lines of max length.
-func wrapLine(max int, line string) []byte {
-	output := make([]byte, 0)
-	lastSpaceIdx := -1
-	lastReadIdx := -1
-	lineLen := 0
-	for i := 0; i < len(line); i++ {
-		lineLen++
-		if line[i] == ' ' || line[i] == '\t' {
-			lastSpaceIdx = i
-		}
-		if lineLen >= max {
-			if lastSpaceIdx > 0 {
-				output = append(output, []byte(line[lastReadIdx+1:lastSpaceIdx])...)
-				output = append(output, '\r', '\n', '\t') // new line
-				lastReadIdx = lastSpaceIdx
-				lineLen = i - lastReadIdx // reset current line length
-				lastSpaceIdx = -1         // rest space index
-			}
-		}
-	}
-	output = append(output, line[lastReadIdx+1:]...)
-	return output
 }

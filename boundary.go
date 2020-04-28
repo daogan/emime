@@ -111,7 +111,7 @@ func (b *BoundaryReader) NextPart() (bool, error) {
 	}
 }
 
-// matches `^--boundary[ \t]*(\r\n)$`
+// matches `^--boundary[ \t]*[\r\n]$`
 func (b *BoundaryReader) isDelimiter(line []byte) bool {
 	if !bytes.HasPrefix(line, b.dashBoundary) {
 		return false
@@ -132,6 +132,8 @@ func (b *BoundaryReader) isDelimiter(line []byte) bool {
 	return bytes.Equal(rest, b.nl)
 }
 
+// matches `^--boundary--*`,
+// more strict should matche `^--boundary--[ \t]*(\r\n)?$`
 func (b *BoundaryReader) isTerminator(line []byte) bool {
 	if !bytes.HasPrefix(line, b.dashBoundaryDash) {
 		return false
@@ -152,7 +154,7 @@ func findBoundary(buf []byte, nlDashBoundary []byte) int {
 		rest := buf[idx+len(nlDashBoundary):]
 		// matches --boundary$
 		if len(rest) == 0 {
-			// need more data to verify
+			// need more data to verify EOF
 			return idx
 		}
 		c := rest[0]

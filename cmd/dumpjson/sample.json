@@ -1,0 +1,173 @@
+{
+	"partId": "",
+	"mimeType": "multipart/mixed",
+	"filename": "",
+	"headers": [
+		{
+			"name": "MIME-Version",
+			"value": "1.0"
+		},
+		{
+			"name": "From",
+			"value": "Nathaniel Borenstein \u003cnsb@bellcore.com\u003e"
+		},
+		{
+			"name": "To",
+			"value": "Ned Freed \u003cned@innosoft.com\u003e"
+		},
+		{
+			"name": "Subject",
+			"value": "A multipart example"
+		},
+		{
+			"name": "Content-Type",
+			"value": "multipart/mixed; boundary=unique-boundary-1"
+		}
+	],
+	"body": {
+		"size": 0
+	},
+	"parts": [
+		{
+			"partId": "0",
+			"mimeType": "text/plain",
+			"filename": "",
+			"headers": [],
+			"body": {
+				"data": "ICAgLi4uU29tZSB0ZXh0IGFwcGVhcnMgaGVyZS4uLgpbTm90ZSB0aGF0IHRoZSBwcmVjZWRpbmcgYmxhbmsgbGluZSBtZWFucwpubyBoZWFkZXIgZmllbGRzIHdlcmUgZ2l2ZW4gYW5kIHRoaXMgaXMgdGV4dCwKd2l0aCBjaGFyc2V0IFVTIEFTQ0lJLiAgSXQgY291bGQgaGF2ZSBiZWVuCmRvbmUgd2l0aCBleHBsaWNpdCB0eXBpbmcgYXMgaW4gdGhlIG5leHQgcGFydC5dCg==",
+				"size": 211
+			}
+		},
+		{
+			"partId": "1",
+			"mimeType": "text/plain",
+			"filename": "",
+			"headers": [
+				{
+					"name": "Content-type",
+					"value": "text/plain; charset=US-ASCII"
+				}
+			],
+			"body": {
+				"data": "VGhpcyBjb3VsZCBoYXZlIGJlZW4gcGFydCBvZiB0aGUgcHJldmlvdXMgcGFydCwKYnV0IGlsbHVzdHJhdGVzIGV4cGxpY2l0IHZlcnN1cyBpbXBsaWNpdAp0eXBpbmcgb2YgYm9keSBwYXJ0cy4K",
+				"size": 111
+			}
+		},
+		{
+			"partId": "2",
+			"mimeType": "multipart/parallel",
+			"filename": "",
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "multipart/parallel; boundary=unique-boundary-2"
+				}
+			],
+			"body": {
+				"size": 0
+			},
+			"parts": [
+				{
+					"partId": "2.0",
+					"mimeType": "audio/basic",
+					"filename": "",
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "audio/basic"
+						},
+						{
+							"name": "Content-Transfer-Encoding",
+							"value": "base64"
+						}
+					],
+					"body": {
+						"data": "base64encoded8000Hzsinglechannelmulawformataudiodatagoeshere",
+						"size": 45
+					}
+				},
+				{
+					"partId": "2.1",
+					"mimeType": "image/gif",
+					"filename": "",
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "image/gif"
+						},
+						{
+							"name": "Content-Transfer-Encoding",
+							"value": "base64"
+						}
+					],
+					"body": {
+						"data": "base64encodedimagedatagoesherQ==",
+						"size": 22
+					}
+				}
+			]
+		},
+		{
+			"partId": "3",
+			"mimeType": "text/richtext",
+			"filename": "",
+			"headers": [
+				{
+					"name": "Content-type",
+					"value": "text/richtext"
+				}
+			],
+			"body": {
+				"data": "VGhpcyBpcyA8Ym9sZD48aXRhbGljPnJpY2h0ZXh0LjwvaXRhbGljPjwvYm9sZD4KPHNtYWxsZXI+YXMgZGVmaW5lZCBpbiBSRkMgMTM0MTwvc21hbGxlcj4KPG5sPjxubD5Jc24ndCBpdAo8YmlnZ2VyPjxiaWdnZXI+Y29vbD88L2JpZ2dlcj48L2JpZ2dlcj4K",
+				"size": 147
+			}
+		},
+		{
+			"partId": "4",
+			"mimeType": "message/rfc822",
+			"filename": "",
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "message/rfc822"
+				}
+			],
+			"body": {
+				"size": 0
+			},
+			"parts": [
+				{
+					"partId": "4.0",
+					"mimeType": "text/plain",
+					"filename": "",
+					"headers": [
+						{
+							"name": "From",
+							"value": "(mailbox in US-ASCII)"
+						},
+						{
+							"name": "To",
+							"value": "(address in US-ASCII)"
+						},
+						{
+							"name": "Subject",
+							"value": "(subject in US-ASCII)"
+						},
+						{
+							"name": "Content-Type",
+							"value": "Text/plain; charset=ISO-8859-1"
+						},
+						{
+							"name": "Content-Transfer-Encoding",
+							"value": "Quoted-printable"
+						}
+					],
+					"body": {
+						"data": "ICAgLi4uIEFkZGl0aW9uYWwgdGV4dCBpbiBJU08tODg1OS0xIGdvZXMgaGVyZSAuLi4K",
+						"size": 51
+					}
+				}
+			]
+		}
+	]
+}

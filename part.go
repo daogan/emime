@@ -48,8 +48,9 @@ func (p *Part) setupHeaders(r *bufio.Reader, defaultContentType string) error {
 	}
 	mtype, tparams, err := mime.ParseMediaType(ctype)
 	if err != nil {
-		if mtype == "" {
-			return fmt.Errorf("fail to parse media type %q: %v", ctype, err)
+		mtype, tparams, err = mime.ParseMediaType(fixMediaType(ctype))
+		if err != nil {
+			return fmt.Errorf("media type, err: %v, Content-Type: %q", err, ctype)
 		}
 	}
 	p.ContentType = mtype
@@ -63,10 +64,10 @@ func (p *Part) setupHeaders(r *bufio.Reader, defaultContentType string) error {
 	disposition, dparams, err := mime.ParseMediaType(cdisp)
 	if err == nil {
 		p.Disposition = disposition
-		p.FileName = DecodeHeader(dparams[hpFileName])
+		p.FileName = decodeHeader(dparams[hpFileName])
 	}
 	if p.FileName == "" && tparams[hpName] != "" {
-		p.FileName = DecodeHeader(tparams[hpName])
+		p.FileName = decodeHeader(tparams[hpName])
 	}
 
 	return nil
@@ -205,22 +206,4 @@ func parse(parent *Part, r io.Reader) (*Part, error) {
 // Parse parses an email into `Part` tree.
 func Parse(r io.Reader) (*Part, error) {
 	return parse(nil, r)
-}
-
-func lowerTrim(s string) string {
-	return strings.ToLower(strings.TrimSpace(s))
-}
-
-// DecodeHeader decodes an email header.
-func DecodeHeader(input string) string {
-	if !strings.Contains(input, "=?") {
-		return input
-	}
-	dec := new(mime.WordDecoder)
-	dec.CharsetReader = coding.NewCharsetReader
-	header, err := dec.DecodeHeader(input)
-	if err != nil {
-		return input
-	}
-	return header
 }
