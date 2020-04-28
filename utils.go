@@ -40,6 +40,8 @@ func fixMediaType(mtype string) string {
 		if len(pair) != 2 {
 			continue
 		}
+		pair[0] = strings.TrimSpace(pair[0])
+		pair[1] = strings.TrimSpace(pair[1])
 		// invalid attribute value
 		if pair[0] == "" || pair[1] == "" {
 			continue

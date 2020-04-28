@@ -6,6 +6,7 @@ import (
 	"encoding/base64"
 	"io"
 	"io/ioutil"
+	"mime"
 	"mime/quotedprintable"
 	"net/textproto"
 	"strings"
@@ -73,6 +74,13 @@ func (p *Part) encodeHeader(b *bufio.Writer) {
 		}
 		val := tHeader[ck][0]
 		tHeader[ck] = tHeader[ck][1:]
+		// fix media type if malformed
+		if ck == hContentType || ck == hContentDisposition {
+			_, _, err := mime.ParseMediaType(val)
+			if err != nil {
+				val = fixMediaType(val)
+			}
+		}
 		line := k + ":_" + val + "\r\n"
 		wb := wrapLine(76, line)
 		wb[len(k)+1] = ' '
