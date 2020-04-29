@@ -54,7 +54,7 @@ func fixMediaType(mtype string) string {
 			if len(pair[1]) < 2 {
 				continue
 			}
-			if pair[1][0] != '"' && pair[1][len(pair[1])-1] != '"' {
+			if pair[1][0] != '"' || pair[1][len(pair[1])-1] != '"' {
 				continue
 			}
 		}

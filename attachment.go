@@ -18,13 +18,13 @@ func isAttachment(part *Part) bool {
 	if part.Disposition == cdAttachment || part.ContentType == ctAppOctetStream {
 		return true
 	}
-	if part.Disposition == cdInline {
-		// inline images/ and application/{pdf/octet-stream} are treated as attachments
-		if strings.HasPrefix(part.ContentType, "image/") ||
-			strings.HasPrefix(part.ContentType, "application/") {
-			return true
-		}
-	}
+	// if part.Disposition == cdInline {
+	//     // inline images/ and application/{pdf/octet-stream} are treated as attachments
+	//     if strings.HasPrefix(part.ContentType, "image/") ||
+	//         strings.HasPrefix(part.ContentType, "application/") {
+	//         return true
+	//     }
+	// }
 	return false
 }
 
