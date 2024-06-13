@@ -2,9 +2,6 @@
 
 emime is an email / [MIME](https://tools.ietf.org/html/rfc2045) parser written in `Go`.
 
-It simplifies [enmime](https://github.com/jhillyerd/enmime), and provides better support for parsing `message/rfc822`.
-
-The parsed tree structure is the same (ignoring minor insignificant string differences) as Python's [email parser](https://docs.python.org/3/library/email.parser.html).
 
 ## Example
 
