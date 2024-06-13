@@ -1,6 +1,8 @@
 # emime
 
-emime is an email / [MIME](https://tools.ietf.org/html/rfc2045) parser written in `Go`.
+emime is an email / [MIME](https://datatracker.ietf.org/doc/html/rfc2045) parser written in `Go`.
+
+Multipurpose Internet Mail Extensions (MIME) is a standard that extends the format of email messages to support text in character sets other than ASCII, as well as attachments of audio, video, images, and application programs. Message bodies may consist of multiple parts, and header information may be specified in non-ASCII character sets. 
 
 
 ## Example
