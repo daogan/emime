@@ -10,6 +10,7 @@ import (
 	"github.com/daogan/emime/internal/coding"
 )
 
+// convert string to lower case and trim spaces
 func lowerTrim(s string) string {
 	return strings.ToLower(strings.TrimSpace(s))
 }
@@ -96,7 +97,7 @@ func wrapLine(max int, line string) []byte {
 				output = append(output, '\r', '\n', '\t') // new line
 				lastReadIdx = lastSpaceIdx
 				lineLen = i - lastReadIdx // reset current line length
-				lastSpaceIdx = -1         // rest space index
+				lastSpaceIdx = -1         // reset space index
 			}
 		}
 	}
